@@ -1,0 +1,86 @@
+<app-modal [isOpen]="isCreateModalOpen()" [title]="createModalTitle" (closed)="closed.emit()">
+  <form [formGroup]="createUserForm" (ngSubmit)="createUserHandler()">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username"> Username </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="username"
+        type="text"
+        placeholder="Username"
+        [formControlName]="'name'"
+      />
+      @if (createUserForm.get('name')?.invalid && createUserForm.get('name')?.touched) {
+      <p class="text-red-500 text-xs mt-1">Name is required</p>
+      }
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email"> Email </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="email"
+        type="email"
+        placeholder="Email"
+        [formControlName]="'email'"
+      />
+      @if (createUserForm.get('email')?.invalid && createUserForm.get('email')?.touched) {
+      <p class="text-red-500 text-xs mt-1">
+        @if (createUserForm.get('email')?.hasError('required')) { Email is required } @else if
+        (createUserForm.get('email')?.hasError('email')) { Invalid email format }
+      </p>
+      }
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="phone"> Phone </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="phone"
+        type="tel"
+        placeholder="Phone"
+        [formControlName]="'phone'"
+      />
+      @if (createUserForm.get('phone')?.invalid && createUserForm.get('phone')?.touched) {
+      <p class="text-red-500 text-xs mt-1">Phone is required</p>
+      }
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="role"> Role </label>
+      <select
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="role"
+        [formControlName]="'role'"
+      >
+        <option value="">Select a role</option>
+        <option value="admin">Admin</option>
+        <option value="user">User</option>
+        <option value="guest">Guest</option>
+      </select>
+      @if (createUserForm.get('role')?.invalid && createUserForm.get('role')?.touched) {
+      <p class="text-red-500 text-xs mt-1">Role is required</p>
+      }
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="status"> Status </label>
+      <select
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="status"
+        [formControlName]="'status'"
+      >
+        <option value="">Select a status</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+      </select>
+      @if (createUserForm.get('status')?.invalid && createUserForm.get('status')?.touched) {
+      <p class="text-red-500 text-xs mt-1">Status is required</p>
+      }
+    </div>
+    <div footer>
+      <button
+        class="disabled:bg-gray-400 disabled:cursor-not-allowed cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit"
+        [disabled]="createUserForm.invalid"
+      >
+        Create User
+      </button>
+    </div>
+  </form>
+</app-modal>
