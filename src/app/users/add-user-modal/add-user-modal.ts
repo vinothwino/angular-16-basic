@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { Modal } from '../shared/components/modal/modal';
+import { Modal } from '../../shared/components/modal/modal';
 import { ReactiveFormsModule, Validators, FormControl, FormGroup } from '@angular/forms';
 
 @Component({

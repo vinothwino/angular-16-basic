@@ -1,0 +1,43 @@
+<div class="flex flex-col gap-4">
+  <div class="flex flex-col gap-2 p-4 bg-purple-500 text-white">
+    <h1 class="text-2xl font-bold text-center">Todo Details</h1>
+  </div>
+  <div class="max-w-7xl mx-auto flex flex-col gap-2 items-start">
+    <button
+      class="bg-white text-purple-500 px-4 py-2 rounded-md cursor-pointer hover:bg-purple-100 disabled:opacity-50 disabled:cursor-not-allowed"
+      [routerLink]="['/todos']"
+    >
+      Go Back
+    </button>
+    <div
+      class="flex flex-col gap-4 p-4 bg-purple-500 text-white rounded-md min-h-96 min-w-96 items-center justify-center"
+    >
+      <input
+        type="text"
+        class="text-2xl font-bold text-center border-2 border-white rounded-md p-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        value="{{ title() }}"
+        (input)="onTitleInput($event)"
+        [disabled]="isEditing()"
+      />
+      <p class="text-sm text-center">{{ todo()?.completed ? 'Completed' : 'Not completed' }}</p>
+      <div class="flex flex-row gap-2">
+        <button
+          class="bg-white text-purple-500 px-4 py-2 rounded-md cursor-pointer hover:bg-purple-100 disabled:opacity-50 disabled:cursor-not-allowed"
+          (click)="onDelete()"
+          [disabled]="isDeleting()"
+        >
+          {{ isDeleting() ? 'Deleting...' : 'Delete' }}
+        </button>
+        @if (todo()?.title !== title()) {
+        <button
+          class="bg-white text-purple-500 px-4 py-2 rounded-md cursor-pointer hover:bg-purple-100 disabled:opacity-50 disabled:cursor-not-allowed"
+          (click)="onEdit()"
+          [disabled]="isEditing()"
+        >
+          {{ isEditing() ? 'Editing...' : 'Edit' }}
+        </button>
+        }
+      </div>
+    </div>
+  </div>
+</div>

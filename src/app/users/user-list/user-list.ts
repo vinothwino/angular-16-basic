@@ -11,16 +11,16 @@ import type {
   SelectionChangedEvent,
 } from 'ag-grid-community';
 import { ModuleRegistry, themeMaterial } from 'ag-grid-community';
-import { User } from '../models/user.model';
-import { UserService } from '../services/user.service';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 import { AllCommunityModule } from 'ag-grid-community';
 import { AddUserModal } from '../add-user-modal/add-user-modal';
 
 @Component({
   selector: 'app-users',
   imports: [AgGridAngular, AddUserModal],
-  templateUrl: './users.html',
-  styleUrl: './users.css',
+  templateUrl: './user-list.html',
+  styleUrl: './user-list.css',
 })
 export class Users {
   private readonly platformId = inject(PLATFORM_ID);
