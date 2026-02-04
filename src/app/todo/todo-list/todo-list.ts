@@ -13,6 +13,6 @@ import { Todo } from '../../models/todo.model';
 export class TodoList {
   private readonly todoService = inject(TodoService);
   protected readonly router = inject(Router);
-  protected readonly todos = toSignal(this.todoService.getTodos$(), { initialValue: [] });
+  public readonly todos = toSignal(this.todoService.getTodos$(), { initialValue: [] });
 
 }

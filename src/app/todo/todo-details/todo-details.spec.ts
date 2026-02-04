@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoDetails } from './todo-details';
+import { provideRouter } from '@angular/router';
 
 describe('TodoDetails', () => {
   let component: TodoDetails;
@@ -8,9 +9,10 @@ describe('TodoDetails', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TodoDetails]
+      imports: [TodoDetails],
+      providers: [provideRouter([{ path: 'todo/:id', component: TodoDetails }]),]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TodoDetails);
     component = fixture.componentInstance;
